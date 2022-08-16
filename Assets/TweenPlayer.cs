@@ -14,30 +14,29 @@ public class TweenPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow)|| Input.GetKeyDown(KeyCode.D))
+        var Xinput = Input.GetAxis("Horizontal");
+        var Yinput = Input.GetAxis("Vertical");
+
+
+        if (Xinput > 0)
         {
-            transform.DORotate(new Vector3(0,0,-30), 0.1f, RotateMode.Fast);
+            transform.DORotate(new Vector3(0,0,-30), 0.1f, RotateMode.Fast).SetEase(Ease.OutBounce);
             transform.DOScaleX(0.8f, 0.1f);
             transform.DOScaleY(1.2f, 0.1f);
         }       
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        if (Xinput < 0)
         {
-            transform.DORotate(new Vector3(0, 0, 30), 0.1f, RotateMode.Fast);
+            transform.DORotate(new Vector3(0, 0, 30), 0.1f, RotateMode.Fast).SetEase(Ease.OutBounce);
             transform.DOScaleX(0.8f, 0.1f);
             transform.DOScaleY(1.2f, 0.1f);
         }
-        if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D))
+        if (Xinput == 0)
         {
-            transform.DORotate(new Vector3(0, 0, 0), 0.1f, RotateMode.Fast).SetEase(Ease.OutBounce);
+            transform.DORotate(new Vector3(0, 0, 0), 0.01f, RotateMode.Fast).SetEase(Ease.OutBounce);
             transform.DOScaleX(1, 0.1f);
             transform.DOScaleY(1, 0.1f);
 
         }
-        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A))
-        {
-            transform.DORotate(new Vector3(0, 0, 0), 0.1f, RotateMode.Fast).SetEase(Ease.OutBounce);
-            transform.DOScaleX(1, 0.1f);
-            transform.DOScaleY(1, 0.1f);
-        }
+
     }
 }
