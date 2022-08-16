@@ -16,6 +16,6 @@ public class PlayerController : MonoBehaviour
         var Xaxis = Input.GetAxis("Horizontal");
         var yAxis = Input.GetAxis("Vertical");
 
-        transform.Translate(new Vector3(Xaxis * 0.05f,yAxis * 0.05f, 0));
+        transform.Translate(new Vector3(Xaxis * 0.09f,yAxis * 0.09f, 0));
     }
 }
